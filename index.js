@@ -42,7 +42,7 @@ function showNotes(){
     let html = "";
     notesObj.forEach(function(element, index) {
         html+= `
-          <div class=" col-4 card"  style="margin:40px">
+          <div class="col-4 card notecard" style="margin:40px">
             <div class="card-body">
               <h5 class="card-title">Note ${index+1}</h5>
               <p class="card-text">${element}</p>
@@ -70,4 +70,20 @@ function deleteNode(index){
 
     showNotes();
 }
-
+let search=document.getElementById("searchtxt");
+search.addEventListener("input",function(){
+    let inputval=search.value.toLowerCase();
+    let notecards=document.getElementsByClassName("notecard");
+    let i=0;
+    Array.from(notecards).forEach(function(element){
+        let cardText=document.getElementsByTagName("p")[i].innerText;
+        if(cardText.includes(inputval)){
+           console.log(cardText);
+           console.log(inputval);
+          element.style.display="block";
+        }else{
+          document.getElementsByClassName("notecard")[i].style.display="none";
+        }
+        i++;
+    });
+});
