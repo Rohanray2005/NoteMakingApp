@@ -1,4 +1,20 @@
-console.log("hello");
+const api_key='6RkE2sujzHUyjVatJ5a3ri9glIsxeCRdLuJ9kOnX';
+console.log("working");
+function change_Background(){
+      var xhrRequest= new XMLHttpRequest();
+    console.log("working");
+      xhrRequest.onload=function(){
+        var respones_json=JSON.parse(xhrRequest.response);
+        var image_url=respones_json.url;
+        console.log(typeof(image_url));
+        var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url('+image_url+')'; 
+      }
+      xhrRequest.open('get','https://api.nasa.gov/planetary/apod?api_key=6RkE2sujzHUyjVatJ5a3ri9glIsxeCRdLuJ9kOnX');
+      xhrRequest.send();
+}
+console.log("working");
+change_Background();
 
 let addbtn = document.getElementsByClassName("addbtn")[0];
 
@@ -87,3 +103,4 @@ search.addEventListener("input",function(){
         i++;
     });
 });
+
